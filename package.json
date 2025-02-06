@@ -1,6 +1,6 @@
 {
   "name": "@tcisse/react-components",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Modern React UI components including Table, Modal, and Drawer",
   "type": "module",
   "main": "dist/index.js",
