@@ -13,10 +13,27 @@ Une collection moderne de composants React réutilisables, comprenant Table, Mod
 
 ## 📦 Installation
 
+Tout d'abord, créez ou éditez `.npmrc` à la racine de votre projet :
+
+```
+@tcisse:registry=https://npm.pkg.github.com
+```
+
+Ensuite, installez le package en utilisant votre gestionnaire de packages préféré :
+
+### pnpm
 ```bash
-npm install @cisseui/react-ui-components
-# ou
-yarn add @cisseui/react-ui-components
+pnpm add @tcisse/react-components
+```
+
+### npm
+```bash
+npm install @tcisse/react-components
+```
+
+### yarn
+```bash
+yarn add @tcisse/react-components
 ```
 
 ## 🛠️ Utilisation
