@@ -1,6 +1,6 @@
 {
   "name": "@cisseui/react-components",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Modern React UI components including Table, Modal, and Drawer",
   "type": "module",
   "main": "dist/index.js",
