@@ -81,16 +81,16 @@ function App() {
 
 ### Table Component
 
-A comprehensive table component for displaying data with sorting, pagination, and responsive design.
+A modern and flexible table component with support for custom styling, dark mode, and responsive design.
 
 ```tsx
 import {
   Table,
-  TableHeader,
+  TableHead,
   TableBody,
   TableRow,
   TableCell,
-  TableHeaderCell,
+  TableHeadCell,
 } from '@cisseui/react-components';
 
 function App() {
@@ -102,14 +102,14 @@ function App() {
 
   return (
     <Table>
-      <TableHeader>
+      <TableHead>
         <TableRow>
-          <TableHeaderCell>ID</TableHeaderCell>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Email</TableHeaderCell>
-          <TableHeaderCell>Role</TableHeaderCell>
+          <TableHeadCell>ID</TableHeadCell>
+          <TableHeadCell>Name</TableHeadCell>
+          <TableHeadCell>Email</TableHeadCell>
+          <TableHeadCell>Role</TableHeadCell>
         </TableRow>
-      </TableHeader>
+      </TableHead>
       <TableBody>
         {data.map((row) => (
           <TableRow key={row.id}>
@@ -124,6 +124,50 @@ function App() {
   );
 }
 ```
+
+#### Features
+
+- 🎨 Modern design with hover states and transitions
+- 🌙 Dark mode support out of the box
+- 📱 Responsive with horizontal scrolling
+- ♿ Semantic HTML and ARIA attributes
+- 🎯 TypeScript support with full type definitions
+- 🎨 Customizable via Tailwind classes
+
+#### Available Components
+
+- `Table`: Main container component
+- `TableHead`: Table header section
+- `TableHeadCell`: Header cell with distinct styling
+- `TableBody`: Table body section
+- `TableRow`: Table row with hover and selection states
+- `TableCell`: Standard table cell
+
+#### Props
+
+##### Table Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | - | Additional CSS classes |
+| children | ReactNode | - | Table content |
+
+##### TableHead Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | - | Additional CSS classes |
+| children | ReactNode | - | Header content |
+
+##### TableHeadCell Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | - | Additional CSS classes |
+| children | ReactNode | - | Cell content |
+
+##### TableCell Props
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| className | string | - | Additional CSS classes |
+| children | ReactNode | - | Cell content |
 
 ## ✨ Features
 
@@ -166,13 +210,6 @@ All components can be customized using:
 | children | ReactNode | - | Drawer content |
 | position | 'left' \| 'right' \| 'top' \| 'bottom' | 'right' | Drawer position |
 | size | 'sm' \| 'md' \| 'lg' \| 'xl' | 'md' | Drawer size |
-
-### Table Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| children | ReactNode | - | Table content |
-| className | string | - | Additional CSS classes |
 
 ## 🤝 Contributing
 

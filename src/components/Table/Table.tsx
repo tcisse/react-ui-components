@@ -64,62 +64,81 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
 
 Table.displayName = 'Table';
 
-export const TableHeader = React.forwardRef<HTMLTableSectionElement, TableHeaderProps>(
-  ({ className, sticky, ...props }, ref) => (
-    <thead
-      ref={ref}
-      className={cn(sticky && 'sticky top-0 z-10 bg-white dark:bg-gray-900 shadow', className)}
-      {...props}
-    />
-  )
+export const TableHead = React.forwardRef<HTMLTableSectionElement, TableHeaderProps>(
+  ({ className, sticky, children, ...props }, ref) => {
+    return (
+      <thead
+        ref={ref}
+        className={cn(
+          sticky && 'sticky top-0 z-10 bg-white dark:bg-gray-900 shadow',
+          '[&_tr]:border-b bg-gray-100/50 dark:bg-gray-800/50',
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </thead>
+    );
+  }
 );
 
-TableHeader.displayName = 'TableHeader';
+TableHead.displayName = 'TableHead';
 
 export const TableBody = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
->(({ className, ...props }, ref) => (
-  <tbody ref={ref} className={cn('[&_tr:last-child]:border-0', className)} {...props} />
+>(({ className, children, ...props }, ref) => (
+  <tbody
+    ref={ref}
+    className={cn('[&_tr:last-child]:border-0', className)}
+    {...props}
+  >
+    {children}
+  </tbody>
 ));
 
 TableBody.displayName = 'TableBody';
 
 export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, children, ...props }, ref) => (
     <tr
       ref={ref}
       className={cn(
         'border-b transition-colors dark:border-gray-700',
         props['data-selected'] && 'bg-gray-100 dark:bg-gray-800',
+        'hover:bg-gray-100/50 dark:hover:bg-gray-800/50',
+        'data-[state=selected]:bg-gray-100 dark:data-[state=selected]:bg-gray-800',
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </tr>
   )
 );
 
 TableRow.displayName = 'TableRow';
 
-export const TableHead = React.forwardRef<HTMLTableHeaderCellElement, TableHeadProps>(
-  ({ className, ...props }, ref) => (
+export const TableHeadCell = React.forwardRef<HTMLTableHeaderCellElement, TableHeadProps>(
+  ({ className, children, ...props }, ref) => (
     <th
       ref={ref}
       className={cn(
-        'h-10 px-4 text-left align-middle font-medium text-gray-500 dark:text-gray-400',
-        'bg-white dark:bg-gray-900',
+        'h-12 px-4 text-left align-middle font-medium text-gray-500 dark:text-gray-400',
         '[&:has([role=checkbox])]:pr-0',
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </th>
   )
 );
 
-TableHead.displayName = 'TableHead';
+TableHeadCell.displayName = 'TableHeadCell';
 
 export const TableCell = React.forwardRef<HTMLTableDataCellElement, TableCellProps>(
-  ({ className, align = 'left', ...props }, ref) => (
+  ({ className, align = 'left', children, ...props }, ref) => (
     <td
       ref={ref}
       className={cn(
@@ -130,14 +149,16 @@ export const TableCell = React.forwardRef<HTMLTableDataCellElement, TableCellPro
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </td>
   )
 );
 
 TableCell.displayName = 'TableCell';
 
 export const TableFooter = React.forwardRef<HTMLTableSectionElement, TableFooterProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, children, ...props }, ref) => (
     <tfoot ref={ref} className={cn('bg-gray-900 font-medium text-gray-50', className)} {...props} />
   )
 );
@@ -145,33 +166,15 @@ export const TableFooter = React.forwardRef<HTMLTableSectionElement, TableFooter
 TableFooter.displayName = 'TableFooter';
 
 export const TableCaption = React.forwardRef<HTMLTableCaptionElement, TableCaptionProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, children, ...props }, ref) => (
     <caption
       ref={ref}
       className={cn('mt-4 text-sm text-gray-500 dark:text-gray-400', className)}
       {...props}
-    />
+    >
+      {children}
+    </caption>
   )
 );
 
 TableCaption.displayName = 'TableCaption';
-
-export const TableHeaderCell = React.forwardRef<HTMLTableHeaderCellElement, TableHeadProps>(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <th
-        ref={ref}
-        className={cn(
-          'h-12 px-4 text-left align-middle font-medium text-gray-500 dark:text-gray-400',
-          '[&:has([role=checkbox])]:pr-0',
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </th>
-    );
-  }
-);
-
-TableHeaderCell.displayName = 'TableHeaderCell';

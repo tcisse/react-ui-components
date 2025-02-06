@@ -3,11 +3,11 @@ export { Modal } from './components/Modal/Modal';
 export { Drawer } from './components/Drawer/Drawer';
 export {
   Table,
-  TableHeader,
+  TableHead,
   TableBody,
   TableRow,
   TableCell,
-  TableHeaderCell,
+  TableHeadCell,
 } from './components/Table/Table';
 
 // Hooks
