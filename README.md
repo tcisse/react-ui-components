@@ -14,9 +14,9 @@ Une collection moderne de composants React réutilisables, comprenant Table, Mod
 ## 📦 Installation
 
 ```bash
-npm install @your-org/react-ui-components
+npm install @cisseui/react-ui-components
 # ou
-yarn add @your-org/react-ui-components
+yarn add @cisseui/react-ui-components
 ```
 
 ## 🛠️ Utilisation
@@ -33,7 +33,7 @@ import {
   TableRow, 
   TableHead, 
   TableCell 
-} from '@your-org/react-ui-components';
+} from '@cisseui/react-ui-components';
 
 function UserTable() {
   return (
@@ -74,7 +74,7 @@ function UserTable() {
 Un composant modal flexible avec support pour différentes tailles et animations.
 
 ```tsx
-import { Modal } from '@your-org/react-ui-components';
+import { Modal } from '@cisseui/react-ui-components';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -108,7 +108,7 @@ function App() {
 Un composant drawer/sidebar avec support pour différentes positions et tailles.
 
 ```tsx
-import { Drawer } from '@your-org/react-ui-components';
+import { Drawer } from '@cisseui/react-ui-components';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
