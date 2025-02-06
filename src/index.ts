@@ -1,7 +1,14 @@
 // Components
-export * from './components/Table/Table';
-export * from './components/Modal/Modal';
-export * from './components/Drawer/Drawer';
+export { Modal } from './components/Modal/Modal';
+export { Drawer } from './components/Drawer/Drawer';
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHeaderCell,
+} from './components/Table/Table';
 
 // Hooks
 export * from './hooks/useClickOutside';
