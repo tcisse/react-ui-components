@@ -58,7 +58,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cisseui/react-ui-components.git"
+    "url": "git+https://github.com/tcisse/react-ui-components.git"
   },
   "author": "cissedev",
   "license": "MIT",
