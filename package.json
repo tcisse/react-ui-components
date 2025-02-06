@@ -1,6 +1,6 @@
 {
-  "name": "@tcisse/react-components",
-  "version": "0.1.3",
+  "name": "@cisseui/react-components",
+  "version": "0.1.2",
   "description": "Modern React UI components including Table, Modal, and Drawer",
   "type": "module",
   "main": "dist/index.js",
@@ -52,22 +52,21 @@
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.0"
   },
-  "keywords": [
-    "react",
-    "ui",
-    "components",
-    "table",
-    "modal",
-    "drawer"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tcisse/react-ui-components.git"
   },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "table",
+    "modal",
+    "drawer"
+  ],
   "author": "cissedev",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "engines": {

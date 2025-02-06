@@ -1,6 +1,6 @@
 # React UI Components
 
-Une collection moderne de composants React réutilisables, comprenant Table, Modal et Drawer. Construite avec TypeScript et Tailwind CSS.
+A modern collection of reusable React components including Table, Modal, and Drawer. Built with TypeScript and CSS.
 
 ## 🚀 Fonctionnalités
 
@@ -13,34 +13,28 @@ Une collection moderne de composants React réutilisables, comprenant Table, Mod
 
 ## 📦 Installation
 
-Tout d'abord, créez ou éditez `.npmrc` à la racine de votre projet :
-
-```
-@tcisse:registry=https://npm.pkg.github.com
-```
-
-Ensuite, installez le package en utilisant votre gestionnaire de packages préféré :
+Installez le package en utilisant votre gestionnaire de packages préféré :
 
 ### pnpm
 ```bash
-pnpm add @tcisse/react-components
+pnpm add @cisseui/react-components
 ```
 
 ### npm
 ```bash
-npm install @tcisse/react-components
+npm install @cisseui/react-components
 ```
 
 ### yarn
 ```bash
-yarn add @tcisse/react-components
+yarn add @cisseui/react-components
 ```
 
 ## 🛠️ Utilisation
 
 ```tsx
 import { useState } from 'react';
-import { Table, Modal, Drawer } from '@tcisse/react-components';
+import { Table, Modal, Drawer } from '@cisseui/react-components';
 
 // Modal Example
 function ModalExample() {
@@ -214,30 +208,20 @@ function App() {
     </div>
   );
 }
-```
 
 ## 🎨 Personnalisation
 
-Les composants utilisent Tailwind CSS pour le styling. Vous pouvez personnaliser l'apparence en :
+Les composants utilisent CSS pour le styling. Vous pouvez personnaliser l'apparence en :
 
-1. Étendant les classes Tailwind dans votre configuration
+1. Étendant les classes CSS dans votre configuration
 2. Utilisant la prop `className` sur n'importe quel composant
 3. Modifiant les variables CSS du thème
 
 ```js
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          50: '#f8fafc',
-          // ...
-          900: '#0f172a',
-        },
-      },
-    },
-  },
+// styles.css
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #f1c40f;
 }
 ```
 
@@ -259,4 +243,3 @@ Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
 
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
