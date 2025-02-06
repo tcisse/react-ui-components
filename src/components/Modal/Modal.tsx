@@ -72,7 +72,7 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         className={cn(
           'fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity duration-300',
-          isOpen ? 'opacity-50' : 'opacity-0'
+          isOpen ? 'opacity-50 backdrop-blur-sm' : 'opacity-0'
         )}
         onClick={onClose}
       />
