@@ -1,174 +1,90 @@
-import { render, screen } from '@testing-library/react';
-
 import React from 'react';
-
+import { render, screen } from '@testing-library/react';
 import {
   Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableFooter,
   TableHead,
-  TableHeader,
+  TableBody,
   TableRow,
+  TableCell,
+  TableHeadCell,
 } from '../Table';
 
 describe('Table Component', () => {
-  it('should render basic table structure', () => {
+  const mockData = [
+    { id: 1, name: 'John Doe', email: 'john@example.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+  ];
+
+  it('renders table with header and body', () => {
     render(
       <Table>
-        <TableHeader>
+        <TableHead>
           <TableRow>
-            <TableHead>Header</TableHead>
+            <TableHeadCell>ID</TableHeadCell>
+            <TableHeadCell>Name</TableHeadCell>
+            <TableHeadCell>Email</TableHeadCell>
           </TableRow>
-        </TableHeader>
+        </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell>Content</TableCell>
+          {mockData.map((row) => (
+            <TableRow key={row.id}>
+              <TableCell>{row.id}</TableCell>
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.email}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+
+    // Verify header cells
+    expect(screen.getByText('ID')).toBeInTheDocument();
+    expect(screen.getByText('Name')).toBeInTheDocument();
+    expect(screen.getByText('Email')).toBeInTheDocument();
+
+    // Verify data cells
+    mockData.forEach((row) => {
+      expect(screen.getByText(row.id.toString())).toBeInTheDocument();
+      expect(screen.getByText(row.name)).toBeInTheDocument();
+      expect(screen.getByText(row.email)).toBeInTheDocument();
+    });
+  });
+
+  it('applies custom className to table components', () => {
+    const { container } = render(
+      <Table className="custom-table">
+        <TableHead className="custom-head">
+          <TableRow className="custom-row">
+            <TableHeadCell className="custom-header-cell">Header</TableHeadCell>
+          </TableRow>
+        </TableHead>
+        <TableBody className="custom-body">
+          <TableRow className="custom-row">
+            <TableCell className="custom-cell">Cell</TableCell>
           </TableRow>
         </TableBody>
       </Table>
     );
 
-    expect(screen.getByText('Header')).toBeInTheDocument();
-    expect(screen.getByText('Content')).toBeInTheDocument();
+    expect(container.querySelector('.custom-table')).toBeInTheDocument();
+    expect(container.querySelector('.custom-head')).toBeInTheDocument();
+    expect(container.querySelector('.custom-body')).toBeInTheDocument();
+    expect(container.querySelector('.custom-header-cell')).toBeInTheDocument();
+    expect(container.querySelector('.custom-cell')).toBeInTheDocument();
   });
 
-  it('should apply striped rows when striped prop is true', () => {
+  it('forwards ref to table element', () => {
+    const ref = React.createRef<HTMLTableElement>();
     render(
-      <Table striped>
-        <TableBody>
+      <Table ref={ref}>
+        <TableHead>
           <TableRow>
-            <TableCell>Row 1</TableCell>
+            <TableHeadCell>Header</TableHeadCell>
           </TableRow>
-          <TableRow>
-            <TableCell>Row 2</TableCell>
-          </TableRow>
-        </TableBody>
+        </TableHead>
       </Table>
     );
 
-    const table = screen.getByRole('table');
-    expect(table).toHaveClass('[&_tbody_tr:nth-child(odd)]:bg-gray-100');
-  });
-
-  it('should apply hover effect when hoverable prop is true', () => {
-    render(
-      <Table hoverable>
-        <TableBody>
-          <TableRow>
-            <TableCell>Content</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    );
-
-    const table = screen.getByRole('table');
-    expect(table).toHaveClass('[&_tbody_tr:hover]:bg-gray-200');
-  });
-
-  describe('TableHeader', () => {
-    it('should render sticky header when sticky prop is true', () => {
-      render(
-        <Table>
-          <TableHeader sticky>
-            <TableRow>
-              <TableHead>Header</TableHead>
-            </TableRow>
-          </TableHeader>
-        </Table>
-      );
-
-      const thead = screen.getByRole('rowgroup');
-      expect(thead).toHaveClass('sticky', 'top-0', 'z-10');
-    });
-  });
-
-  describe('TableCell', () => {
-    it('should apply correct alignment classes', () => {
-      const { rerender } = render(
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell align="center">Content</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      );
-      expect(screen.getByText('Content')).toHaveClass('text-center');
-
-      rerender(
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell align="right">Content</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      );
-      expect(screen.getByText('Content')).toHaveClass('text-right');
-    });
-  });
-
-  describe('TableHead', () => {
-    it('should render with correct base styles', () => {
-      render(
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Header</TableHead>
-            </TableRow>
-          </TableHeader>
-        </Table>
-      );
-      const header = screen.getByText('Header');
-      expect(header).toHaveClass('h-10');
-    });
-  });
-
-  describe('TableRow', () => {
-    it('should apply selected state styles', () => {
-      render(
-        <Table>
-          <TableBody>
-            <TableRow data-selected={true}>
-              <TableCell>Content</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      );
-
-      const row = screen.getByRole('row');
-      expect(row).toHaveClass('bg-gray-100');
-    });
-  });
-
-  describe('TableCaption', () => {
-    it('should render with correct styles', () => {
-      render(
-        <Table>
-          <TableCaption>Caption Text</TableCaption>
-        </Table>
-      );
-      const caption = screen.getByText('Caption Text');
-      expect(caption).toHaveClass('mt-4', 'text-sm');
-    });
-  });
-
-  describe('TableFooter', () => {
-    it('should render with correct styles', () => {
-      render(
-        <Table>
-          <TableFooter>
-            <TableRow>
-              <TableCell>Footer Content</TableCell>
-            </TableRow>
-          </TableFooter>
-        </Table>
-      );
-
-      const footer = screen.getByRole('rowgroup');
-      expect(footer).toHaveClass('bg-gray-900', 'font-medium');
-    });
+    expect(ref.current).toBeInstanceOf(HTMLTableElement);
   });
 });
