@@ -15,7 +15,11 @@
     "lint": "eslint src --ext .ts,.tsx",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepublishOnly": "npm run test && npm run lint && npm run build"
+    "prepublishOnly": "npm run test && npm run lint && npm run build",
+    "version:patch": "npm version patch -m 'chore: release %s'",
+    "version:minor": "npm version minor -m 'chore: release %s'",
+    "version:major": "npm version major -m 'chore: release %s'",
+    "postversion": "git push --follow-tags"
   },
   "peerDependencies": {
     "react": "^18.0.0",
