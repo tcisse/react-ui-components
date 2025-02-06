@@ -38,123 +38,183 @@ yarn add @tcisse/react-components
 
 ## 🛠️ Utilisation
 
-### Table Component
-
-Un composant de table moderne avec support pour les en-têtes fixes, le tri, et plus encore.
-
 ```tsx
-import { 
-  Table, 
-  TableHeader, 
-  TableBody, 
-  TableRow, 
-  TableHead, 
-  TableCell 
-} from '@cisseui/react-ui-components';
+import { useState } from 'react';
+import { Table, Modal, Drawer } from '@tcisse/react-components';
 
-function UserTable() {
-  return (
-    <Table striped hoverable>
-      <TableHeader sticky>
-        <TableRow>
-          <TableHead>Nom</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead align="right">Actions</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        <TableRow>
-          <TableCell>John Doe</TableCell>
-          <TableCell>john@example.com</TableCell>
-          <TableCell align="right">
-            <button>Edit</button>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
-  );
-}
-```
-
-#### Props de Table
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| stickyHeader | boolean | false | Fixe l'en-tête lors du défilement |
-| striped | boolean | false | Ajoute des rayures alternées aux lignes |
-| hoverable | boolean | false | Ajoute un effet hover aux lignes |
-| compact | boolean | false | Réduit l'espacement |
-| bordered | boolean | false | Ajoute des bordures |
-
-### Modal Component
-
-Un composant modal flexible avec support pour différentes tailles et animations.
-
-```tsx
-import { Modal } from '@cisseui/react-ui-components';
-
-function App() {
+// Modal Example
+function ModalExample() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={() => setIsOpen(false)}
-      title="Titre du Modal"
-      size="md"
-    >
-      <p>Contenu du modal...</p>
-    </Modal>
+    <>
+      <button
+        onClick={() => setIsOpen(true)}
+        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Open Modal
+      </button>
+
+      <Modal 
+        isOpen={isOpen} 
+        onClose={() => setIsOpen(false)}
+        title="Example Modal"
+      >
+        <div className="p-4">
+          <h2>Modal Content</h2>
+          <p>This is an example modal content.</p>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+          >
+            Close Modal
+          </button>
+        </div>
+      </Modal>
+    </>
   );
 }
-```
 
-#### Props de Modal
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| isOpen | boolean | - | Contrôle la visibilité |
-| onClose | function | - | Callback de fermeture |
-| title | string | - | Titre du modal |
-| size | 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full' | 'md' | Taille du modal |
-| closeOnClickOutside | boolean | true | Ferme au clic extérieur |
-| closeOnEsc | boolean | true | Ferme avec la touche Echap |
-
-### Drawer Component
-
-Un composant drawer/sidebar avec support pour différentes positions et tailles.
-
-```tsx
-import { Drawer } from '@cisseui/react-ui-components';
-
-function App() {
+// Drawer Example
+function DrawerExample() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Drawer
-      isOpen={isOpen}
-      onClose={() => setIsOpen(false)}
-      position="right"
-      size="md"
-    >
-      <div className="p-4">
-        <h2>Menu</h2>
-        <nav>{/* ... */}</nav>
+    <>
+      <button
+        onClick={() => setIsOpen(true)}
+        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+      >
+        Open Drawer
+      </button>
+
+      <Drawer 
+        isOpen={isOpen} 
+        onClose={() => setIsOpen(false)}
+        position="right"
+        size="md"
+      >
+        <div className="p-4">
+          <h2 className="text-xl font-bold mb-4">Drawer Content</h2>
+          <p>This is an example drawer content.</p>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+          >
+            Close Drawer
+          </button>
+        </div>
+      </Drawer>
+    </>
+  );
+}
+
+// Table Example
+function TableExample() {
+  const data = [
+    { id: 1, name: 'John Doe', email: 'john@example.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+  ];
+
+  const columns = [
+    { key: 'name', header: 'Name' },
+    { key: 'email', header: 'Email' },
+  ];
+
+  return (
+    <Table
+      data={data}
+      columns={columns}
+      stickyHeader
+      hoverable
+      striped
+    />
+  );
+}
+
+// Full Example with All Components
+function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  return (
+    <div className="p-4">
+      <div className="flex gap-4 mb-8">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Open Modal
+        </button>
+        <button
+          onClick={() => setIsDrawerOpen(true)}
+          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+        >
+          Open Drawer
+        </button>
       </div>
-    </Drawer>
+
+      {/* Table */}
+      <Table
+        data={[
+          { id: 1, name: 'John Doe', email: 'john@example.com' },
+          { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+        ]}
+        columns={[
+          { key: 'name', header: 'Name' },
+          { key: 'email', header: 'Email' },
+        ]}
+        stickyHeader
+        hoverable
+        striped
+      />
+
+      {/* Modal */}
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)}
+        title="Example Modal"
+      >
+        <div className="p-4">
+          <h2>Welcome!</h2>
+          <p>This is an example modal with a button to open/close it.</p>
+          <button
+            onClick={() => setIsModalOpen(false)}
+            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+          >
+            Close Modal
+          </button>
+        </div>
+      </Modal>
+
+      {/* Drawer */}
+      <Drawer 
+        isOpen={isDrawerOpen} 
+        onClose={() => setIsDrawerOpen(false)}
+        position="right"
+        size="md"
+      >
+        <div className="p-4">
+          <h2 className="text-xl font-bold mb-4">Menu</h2>
+          <nav>
+            <ul className="space-y-2">
+              <li>Home</li>
+              <li>About</li>
+              <li>Contact</li>
+            </ul>
+          </nav>
+          <button
+            onClick={() => setIsDrawerOpen(false)}
+            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+          >
+            Close Drawer
+          </button>
+        </div>
+      </Drawer>
+    </div>
   );
 }
 ```
-
-#### Props de Drawer
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| isOpen | boolean | - | Contrôle la visibilité |
-| onClose | function | - | Callback de fermeture |
-| position | 'left' \| 'right' \| 'top' \| 'bottom' | 'right' | Position du drawer |
-| size | 'sm' \| 'md' \| 'lg' \| 'xl' \| 'full' | 'md' | Taille du drawer |
-| overlay | boolean | true | Affiche un overlay sombre |
 
 ## 🎨 Personnalisation
 
