@@ -13,7 +13,7 @@ describe('Drawer Component', () => {
 
   it('should not render when isOpen is false', () => {
     render(
-      <Drawer isOpen={false} onClose={onCloseMock}>
+      <Drawer isOpen={false} onClose={onCloseMock} title="Test Drawer">
         <div>Test Content</div>
       </Drawer>
     );
@@ -23,7 +23,7 @@ describe('Drawer Component', () => {
 
   it('should render when isOpen is true', () => {
     render(
-      <Drawer isOpen={true} onClose={onCloseMock}>
+      <Drawer isOpen={true} onClose={onCloseMock} title="Test Drawer">
         <div>Test Content</div>
       </Drawer>
     );
@@ -33,7 +33,7 @@ describe('Drawer Component', () => {
 
   it('should call onClose when clicking outside', () => {
     render(
-      <Drawer isOpen={true} onClose={onCloseMock}>
+      <Drawer isOpen={true} onClose={onCloseMock} title="Test Drawer">
         <div>Test Content</div>
       </Drawer>
     );
@@ -47,7 +47,7 @@ describe('Drawer Component', () => {
 
   it('should call onClose when pressing Escape', () => {
     render(
-      <Drawer isOpen={true} onClose={onCloseMock}>
+      <Drawer isOpen={true} onClose={onCloseMock} title="Test Drawer">
         <div>Test Content</div>
       </Drawer>
     );
@@ -58,7 +58,7 @@ describe('Drawer Component', () => {
 
   it('should not call onClose when clicking inside the drawer', () => {
     render(
-      <Drawer isOpen={true} onClose={onCloseMock}>
+      <Drawer isOpen={true} onClose={onCloseMock} title="Test Drawer">
         <div>Test Content</div>
       </Drawer>
     );
@@ -69,7 +69,7 @@ describe('Drawer Component', () => {
 
   it('should apply correct position class', () => {
     render(
-      <Drawer isOpen={true} onClose={onCloseMock} position="left">
+      <Drawer isOpen={true} onClose={onCloseMock} position="left" title="Test Drawer">
         <div>Test Content</div>
       </Drawer>
     );
@@ -80,7 +80,7 @@ describe('Drawer Component', () => {
 
   it('should apply correct size class', () => {
     render(
-      <Drawer isOpen={true} onClose={onCloseMock} size="lg" position="right">
+      <Drawer isOpen={true} onClose={onCloseMock} size="lg" position="right" title="Test Drawer">
         <div>Test Content</div>
       </Drawer>
     );
@@ -91,7 +91,7 @@ describe('Drawer Component', () => {
 
   it('should not render overlay when overlay prop is false', () => {
     const { container } = render(
-      <Drawer isOpen={true} onClose={onCloseMock} overlay={false}>
+      <Drawer isOpen={true} onClose={onCloseMock} overlay={false} title="Test Drawer">
         <div>Test Content</div>
       </Drawer>
     );
