@@ -1,245 +1,183 @@
-# React UI Components
+# @cisseui/react-components
 
-A modern collection of reusable React components including Table, Modal, and Drawer. Built with TypeScript and CSS.
-
-## 🚀 Fonctionnalités
-
-- 📱 **Responsive** - Tous les composants sont optimisés pour mobile
-- 🌗 **Thème Sombre** - Support complet du mode sombre
-- 🎨 **Personnalisable** - Styles facilement modifiables via Tailwind CSS
-- 📦 **Léger** - Bundle size optimisé
-- 🔒 **Type-safe** - Écrit en TypeScript avec des types complets
-- ♿️ **Accessible** - Suit les meilleures pratiques ARIA
+A modern React component library featuring Table, Modal, and Drawer components. Built with TypeScript and styled with Tailwind CSS.
 
 ## 📦 Installation
 
-Installez le package en utilisant votre gestionnaire de packages préféré :
-
-### pnpm
 ```bash
+npm install @cisseui/react-components
+# or
+yarn add @cisseui/react-components
+# or
 pnpm add @cisseui/react-components
 ```
 
-### npm
-```bash
-npm install @cisseui/react-components
-```
-
-### yarn
-```bash
-yarn add @cisseui/react-components
-```
-
-## 🛠️ Utilisation
+## 🚀 Quick Start
 
 ```tsx
-import { useState } from 'react';
-import { Table, Modal, Drawer } from '@cisseui/react-components';
+import { Modal, Drawer, Table } from '@cisseui/react-components';
+```
 
-// Modal Example
-function ModalExample() {
-  const [isOpen, setIsOpen] = useState(false);
+## 🛠️ Components
 
-  return (
-    <>
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-      >
-        Open Modal
-      </button>
+### Modal Component
 
-      <Modal 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)}
-        title="Example Modal"
-      >
-        <div className="p-4">
-          <h2>Modal Content</h2>
-          <p>This is an example modal content.</p>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-          >
-            Close Modal
-          </button>
-        </div>
-      </Modal>
-    </>
-  );
-}
+A flexible modal dialog component with customizable content, animations, and backdrop.
 
-// Drawer Example
-function DrawerExample() {
-  const [isOpen, setIsOpen] = useState(false);
+```tsx
+import { Modal } from '@cisseui/react-components';
 
-  return (
-    <>
-      <button
-        onClick={() => setIsOpen(true)}
-        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-      >
-        Open Drawer
-      </button>
-
-      <Drawer 
-        isOpen={isOpen} 
-        onClose={() => setIsOpen(false)}
-        position="right"
-        size="md"
-      >
-        <div className="p-4">
-          <h2 className="text-xl font-bold mb-4">Drawer Content</h2>
-          <p>This is an example drawer content.</p>
-          <button
-            onClick={() => setIsOpen(false)}
-            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-          >
-            Close Drawer
-          </button>
-        </div>
-      </Drawer>
-    </>
-  );
-}
-
-// Table Example
-function TableExample() {
-  const data = [
-    { id: 1, name: 'John Doe', email: 'john@example.com' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-  ];
-
-  const columns = [
-    { key: 'name', header: 'Name' },
-    { key: 'email', header: 'Email' },
-  ];
-
-  return (
-    <Table
-      data={data}
-      columns={columns}
-      stickyHeader
-      hoverable
-      striped
-    />
-  );
-}
-
-// Full Example with All Components
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="p-4">
-      <div className="flex gap-4 mb-8">
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          Open Modal
-        </button>
-        <button
-          onClick={() => setIsDrawerOpen(true)}
-          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-        >
-          Open Drawer
-        </button>
-      </div>
-
-      {/* Table */}
-      <Table
-        data={[
-          { id: 1, name: 'John Doe', email: 'john@example.com' },
-          { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
-        ]}
-        columns={[
-          { key: 'name', header: 'Name' },
-          { key: 'email', header: 'Email' },
-        ]}
-        stickyHeader
-        hoverable
-        striped
-      />
-
-      {/* Modal */}
+    <>
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      
       <Modal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
         title="Example Modal"
       >
-        <div className="p-4">
-          <h2>Welcome!</h2>
-          <p>This is an example modal with a button to open/close it.</p>
-          <button
-            onClick={() => setIsModalOpen(false)}
-            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-          >
-            Close Modal
-          </button>
+        <div className="p-6">
+          <h2>Modal Content</h2>
+          <p>This is an example modal dialog</p>
         </div>
       </Modal>
-
-      {/* Drawer */}
-      <Drawer 
-        isOpen={isDrawerOpen} 
-        onClose={() => setIsDrawerOpen(false)}
-        position="right"
-        size="md"
-      >
-        <div className="p-4">
-          <h2 className="text-xl font-bold mb-4">Menu</h2>
-          <nav>
-            <ul className="space-y-2">
-              <li>Home</li>
-              <li>About</li>
-              <li>Contact</li>
-            </ul>
-          </nav>
-          <button
-            onClick={() => setIsDrawerOpen(false)}
-            className="mt-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-          >
-            Close Drawer
-          </button>
-        </div>
-      </Drawer>
-    </div>
+    </>
   );
-}
-
-## 🎨 Personnalisation
-
-Les composants utilisent CSS pour le styling. Vous pouvez personnaliser l'apparence en :
-
-1. Étendant les classes CSS dans votre configuration
-2. Utilisant la prop `className` sur n'importe quel composant
-3. Modifiant les variables CSS du thème
-
-```js
-// styles.css
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #f1c40f;
 }
 ```
 
-## 📝 Contribution
+### Drawer Component
 
-Les contributions sont les bienvenues ! Voici comment vous pouvez aider :
+A sliding drawer component that can appear from any edge of the screen.
 
-1. Fork le projet
-2. Créez votre branche (`git checkout -b feature/AmazingFeature`)
-3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push sur la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
+```tsx
+import { Drawer } from '@cisseui/react-components';
 
-## 📄 License
+function App() {
+  const [isOpen, setIsOpen] = useState(false);
 
-Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>Open Drawer</button>
+      
+      <Drawer 
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Example Drawer"
+        position="right"
+      >
+        <div className="p-6">
+          <h2>Drawer Content</h2>
+          <p>This is an example drawer</p>
+        </div>
+      </Drawer>
+    </>
+  );
+}
+```
 
-## 🙏 Remerciements
+### Table Component
 
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
+A comprehensive table component for displaying data with sorting, pagination, and responsive design.
+
+```tsx
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableHeaderCell,
+} from '@cisseui/react-components';
+
+function App() {
+  const data = [
+    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'Admin' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'User' },
+    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', role: 'User' },
+  ];
+
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHeaderCell>ID</TableHeaderCell>
+          <TableHeaderCell>Name</TableHeaderCell>
+          <TableHeaderCell>Email</TableHeaderCell>
+          <TableHeaderCell>Role</TableHeaderCell>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {data.map((row) => (
+          <TableRow key={row.id}>
+            <TableCell>{row.id}</TableCell>
+            <TableCell>{row.name}</TableCell>
+            <TableCell>{row.email}</TableCell>
+            <TableCell>{row.role}</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+}
+```
+
+## ✨ Features
+
+- 🎨 Modern design with Tailwind CSS
+- 🌙 Dark mode support
+- 📱 Responsive and mobile-friendly
+- ♿ Accessible (ARIA compliant)
+- 🔒 TypeScript support
+- 🎯 Zero-dependency (except for React and Tailwind)
+- 🚀 Tree-shakeable
+- 📦 Small bundle size
+
+## 🎨 Customization
+
+All components can be customized using:
+
+1. **Tailwind Classes**: Use the `className` prop to extend or override default styles
+2. **Theme**: Components automatically adapt to your Tailwind theme configuration
+3. **Props**: Each component has specific props for customization
+
+## 🔧 Props
+
+### Modal Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| isOpen | boolean | false | Controls the visibility of the modal |
+| onClose | () => void | - | Callback when modal is closed |
+| title | string | - | Modal title |
+| children | ReactNode | - | Modal content |
+| size | 'sm' \| 'md' \| 'lg' \| 'xl' | 'md' | Modal size |
+
+### Drawer Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| isOpen | boolean | false | Controls the visibility of the drawer |
+| onClose | () => void | - | Callback when drawer is closed |
+| title | string | - | Drawer title |
+| children | ReactNode | - | Drawer content |
+| position | 'left' \| 'right' \| 'top' \| 'bottom' | 'right' | Drawer position |
+| size | 'sm' \| 'md' \| 'lg' \| 'xl' | 'md' | Drawer size |
+
+### Table Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| children | ReactNode | - | Table content |
+| className | string | - | Additional CSS classes |
+
+## 🤝 Contributing
+
+We welcome contributions! Please feel free to submit a Pull Request.
+
+## 📝 License
+
+MIT 
