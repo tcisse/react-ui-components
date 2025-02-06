@@ -1,5 +1,5 @@
 {
-  "name": "@cisseui/react-components",
+  "name": "@tcisse/react-components",
   "version": "0.1.2",
   "description": "Modern React UI components including Table, Modal, and Drawer",
   "type": "module",
