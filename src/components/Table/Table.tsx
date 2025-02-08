@@ -39,7 +39,7 @@ interface TableFooterProps extends React.HTMLAttributes<HTMLTableSectionElement>
 }
 
 export const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  ({ className, stickyHeader, striped, hoverable, compact, bordered, children, ...props }, ref) => {
+  ({ className, striped, compact, bordered, children, ...props }, ref) => {
     return (
       <div className="w-full overflow-auto">
         <table
@@ -47,7 +47,6 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
           className={cn(
             'w-full caption-bottom text-sm',
             striped && '[&_tbody_tr:nth-child(odd)]:bg-gray-100',
-            // hoverable && '[&_tbody_tr:hover]:bg-gray-200',
             compact ? 'border-collapse' : 'border-spacing-0',
             bordered && 'border border-gray-200 [&_th]:border [&_td]:border',
             className
@@ -164,14 +163,12 @@ export const TableFooter = React.forwardRef<HTMLTableSectionElement, TableFooter
 TableFooter.displayName = 'TableFooter';
 
 export const TableCaption = React.forwardRef<HTMLTableCaptionElement, TableCaptionProps>(
-  ({ className, children, ...props }, ref) => (
+  ({ className, ...props }, ref) => (
     <caption
       ref={ref}
       className={cn('mt-4 text-sm text-gray-500', className)}
       {...props}
-    >
-      {children}
-    </caption>
+    />
   )
 );
 

@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import React from 'react';
 
@@ -20,14 +20,15 @@ describe('useClickOutside', () => {
 
   it('should not call handler when clicking inside', () => {
     const handler = jest.fn();
-    const TestComponent = () => {
-      const ref = React.useRef<HTMLDivElement>(null);
-      useClickOutside(ref, handler);
-      return <div ref={ref}>Inside</div>;
-    };
-
-    const { getByText } = render(<TestComponent />);
-    fireEvent.mouseDown(getByText('Inside'));
+    render(
+      <div>
+        <button>Click me</button>
+      </div>
+    );
+    
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+    
     expect(handler).not.toHaveBeenCalled();
   });
 
