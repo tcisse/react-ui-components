@@ -32,6 +32,7 @@ interface TableCellProps extends React.TdHTMLAttributes<HTMLTableDataCellElement
 
 interface TableCaptionProps extends React.HTMLAttributes<HTMLTableCaptionElement> {
   className?: string;
+  children?: React.ReactNode;
 }
 
 interface TableFooterProps extends React.HTMLAttributes<HTMLTableSectionElement> {
@@ -163,12 +164,14 @@ export const TableFooter = React.forwardRef<HTMLTableSectionElement, TableFooter
 TableFooter.displayName = 'TableFooter';
 
 export const TableCaption = React.forwardRef<HTMLTableCaptionElement, TableCaptionProps>(
-  ({ className, ...props }, ref) => (
+  ({ className, children, ...props }, ref) => (
     <caption
       ref={ref}
       className={cn('mt-4 text-sm text-gray-500', className)}
       {...props}
-    />
+    >
+      {children}
+    </caption>
   )
 );
 

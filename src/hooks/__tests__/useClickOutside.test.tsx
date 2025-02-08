@@ -18,7 +18,7 @@ describe('useClickOutside', () => {
       );
     };
 
-    const { getByTestId } = render(<TestComponent />);
+    render(<TestComponent />);
     const outsideElement = document.createElement('div');
     document.body.appendChild(outsideElement);
     
