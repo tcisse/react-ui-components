@@ -7,30 +7,44 @@ import { useClickOutside } from '../useClickOutside';
 describe('useClickOutside', () => {
   it('should call handler when clicking outside', () => {
     const handler = jest.fn();
+    
     const TestComponent = () => {
       const ref = React.useRef<HTMLDivElement>(null);
       useClickOutside(ref, handler);
-      return <div ref={ref}>Inside</div>;
+      return (
+        <div ref={ref} data-testid="inside">
+          Inside Content
+        </div>
+      );
     };
 
-    const { container } = render(<TestComponent />);
-    fireEvent.mouseDown(document.body);
+    const { getByTestId } = render(<TestComponent />);
+    const outsideElement = document.createElement('div');
+    document.body.appendChild(outsideElement);
+    
+    fireEvent.mouseDown(outsideElement);
     expect(handler).toHaveBeenCalled();
+    
+    document.body.removeChild(outsideElement);
   });
 
   it('should not call handler when clicking inside', () => {
     const handler = jest.fn();
-    const { getByTestId } = render(
-      <div data-testid="container">
-        <button>Click me</button>
-      </div>
-    );
     
-    const container = getByTestId('container');
-    const ref = { current: container };
-    useClickOutside(ref, handler);
+    const TestComponent = () => {
+      const ref = React.useRef<HTMLDivElement>(null);
+      useClickOutside(ref, handler);
+      return (
+        <div ref={ref} data-testid="inside">
+          Inside Content
+        </div>
+      );
+    };
+
+    const { getByTestId } = render(<TestComponent />);
+    const insideElement = getByTestId('inside');
     
-    fireEvent.mouseDown(container);
+    fireEvent.mouseDown(insideElement);
     expect(handler).not.toHaveBeenCalled();
   });
 
