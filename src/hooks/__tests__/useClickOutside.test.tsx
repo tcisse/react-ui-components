@@ -20,14 +20,14 @@ describe('useClickOutside', () => {
 
   it('should not call handler when clicking inside', () => {
     const handler = jest.fn();
-    render(
-      <div>
+    const { getByTestId } = render(
+      <div data-testid="container">
         <button>Click me</button>
       </div>
     );
     
-    const button = screen.getByRole('button');
-    fireEvent.click(button);
+    const container = getByTestId('container');
+    fireEvent.click(container);
     
     expect(handler).not.toHaveBeenCalled();
   });
