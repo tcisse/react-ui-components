@@ -157,7 +157,13 @@ TableCell.displayName = 'TableCell';
 
 export const TableFooter = React.forwardRef<HTMLTableSectionElement, TableFooterProps>(
   ({ className, children, ...props }, ref) => (
-    <tfoot ref={ref} className={cn('bg-gray-900 font-medium text-gray-50', className)} {...props} />
+    <tfoot
+      ref={ref}
+      className={cn('bg-gray-900 font-medium text-gray-50', className)}
+      {...props}
+    >
+      {children}
+    </tfoot>
   )
 );
 
