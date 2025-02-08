@@ -125,45 +125,27 @@ function App() {
 }
 ```
 
-#### Features
-
-- 🎨 Modern design with hover states and transitions
-- 🌙 Dark mode support out of the box
-- 📱 Responsive with horizontal scrolling
-- ♿ Semantic HTML and ARIA attributes
-- 🎯 TypeScript support with full type definitions
-- 🎨 Customizable via Tailwind classes
-
-#### Available Components
-
-- `Table`: Main container component
-- `TableHead`: Table header section
-- `TableHeadCell`: Header cell with distinct styling
-- `TableBody`: Table body section
-- `TableRow`: Table row with hover and selection states
-- `TableCell`: Standard table cell
-
 #### Props
 
-##### Table Props
+##### Table
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | className | string | - | Additional CSS classes |
 | children | ReactNode | - | Table content |
 
-##### TableHead Props
+##### TableHead
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | className | string | - | Additional CSS classes |
 | children | ReactNode | - | Header content |
 
-##### TableHeadCell Props
+##### TableHeadCell
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | className | string | - | Additional CSS classes |
 | children | ReactNode | - | Cell content |
 
-##### TableCell Props
+##### TableCell
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | className | string | - | Additional CSS classes |
@@ -190,7 +172,7 @@ All components can be customized using:
 
 ## 🔧 Props
 
-### Modal Props
+### Modal
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -200,7 +182,7 @@ All components can be customized using:
 | children | ReactNode | - | Modal content |
 | size | 'sm' \| 'md' \| 'lg' \| 'xl' | 'md' | Modal size |
 
-### Drawer Props
+### Drawer
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|

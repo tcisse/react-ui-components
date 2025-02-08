@@ -86,18 +86,18 @@ export const Drawer: React.FC<DrawerProps> = ({
         role="dialog"
         aria-modal="true"
         className={cn(
-          'fixed bg-white dark:bg-gray-800 shadow-lg transition-transform duration-300 ease-in-out',
+          'fixed bg-white shadow-lg transition-transform duration-300 ease-in-out',
           positionClasses[position],
           sizeClasses[size],
           className
         )}
       >
         {/* Header with title and close button */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h2>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+          <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none"
+            className="text-gray-500 hover:text-gray-700 focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

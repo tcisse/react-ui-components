@@ -46,11 +46,10 @@ export const Table = React.forwardRef<HTMLTableElement, TableProps>(
           ref={ref}
           className={cn(
             'w-full caption-bottom text-sm',
-            striped &&
-              '[&_tbody_tr:nth-child(odd)]:bg-gray-100 dark:[&_tbody_tr:nth-child(odd)]:bg-gray-800',
-            hoverable && '[&_tbody_tr:hover]:bg-gray-200 dark:[&_tbody_tr:hover]:bg-gray-700',
+            striped && '[&_tbody_tr:nth-child(odd)]:bg-gray-100',
+            // hoverable && '[&_tbody_tr:hover]:bg-gray-200',
             compact ? 'border-collapse' : 'border-spacing-0',
-            bordered && 'border border-gray-200 dark:border-gray-700 [&_th]:border [&_td]:border',
+            bordered && 'border border-gray-200 [&_th]:border [&_td]:border',
             className
           )}
           {...props}
@@ -70,8 +69,8 @@ export const TableHead = React.forwardRef<HTMLTableSectionElement, TableHeaderPr
       <thead
         ref={ref}
         className={cn(
-          sticky && 'sticky top-0 z-10 bg-white dark:bg-gray-900 shadow',
-          '[&_tr]:border-b bg-gray-100/50 dark:bg-gray-800/50',
+          sticky && 'sticky top-0 z-10 bg-white',
+          '[&_tr]:border-b bg-gray-100/50',
           className
         )}
         {...props}
@@ -104,10 +103,9 @@ export const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
     <tr
       ref={ref}
       className={cn(
-        'border-b transition-colors dark:border-gray-700',
-        props['data-selected'] && 'bg-gray-100 dark:bg-gray-800',
-        'hover:bg-gray-100/50 dark:hover:bg-gray-800/50',
-        'data-[state=selected]:bg-gray-100 dark:data-[state=selected]:bg-gray-800',
+        'border-b',
+        props['data-selected'] && 'bg-gray-100',
+        'data-[state=selected]:bg-gray-100',
         className
       )}
       {...props}
@@ -124,7 +122,7 @@ export const TableHeadCell = React.forwardRef<HTMLTableHeaderCellElement, TableH
     <th
       ref={ref}
       className={cn(
-        'h-12 px-4 text-left align-middle font-medium text-gray-500 dark:text-gray-400',
+        'h-12 px-4 text-left align-middle font-medium text-gray-500',
         '[&:has([role=checkbox])]:pr-0',
         className
       )}
@@ -169,7 +167,7 @@ export const TableCaption = React.forwardRef<HTMLTableCaptionElement, TableCapti
   ({ className, children, ...props }, ref) => (
     <caption
       ref={ref}
-      className={cn('mt-4 text-sm text-gray-500 dark:text-gray-400', className)}
+      className={cn('mt-4 text-sm text-gray-500', className)}
       {...props}
     >
       {children}

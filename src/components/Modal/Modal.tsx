@@ -84,7 +84,7 @@ export const Modal: React.FC<ModalProps> = ({
         aria-modal="true"
         aria-labelledby={title ? 'modal-title' : undefined}
         className={cn(
-          'relative w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl',
+          'relative w-full bg-white rounded-lg shadow-xl',
           'transform transition-all duration-300 ease-in-out',
           sizeClasses[size],
           className,
@@ -92,13 +92,13 @@ export const Modal: React.FC<ModalProps> = ({
         )}
       >
         {title && (
-          <div className="flex items-center justify-between p-4 border-b dark:border-gray-700">
-            <h2 id="modal-title" className="text-lg font-semibold text-gray-900 dark:text-white">
+          <div className="flex items-center justify-between p-4 border-b">
+            <h2 id="modal-title" className="text-lg font-semibold text-black">
               {title}
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none"
+              className="text-gray-500 hover:text-gray-700 focus:outline-none"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

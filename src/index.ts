@@ -9,9 +9,3 @@ export {
   TableCell,
   TableHeadCell,
 } from './components/Table/Table';
-
-// Hooks
-export * from './hooks/useClickOutside';
-
-// Utils
-export * from './utils/cn';
