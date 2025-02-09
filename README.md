@@ -2,6 +2,25 @@
 
 A modern React component library featuring Table, Modal, and Drawer components. Built with TypeScript and styled with Tailwind CSS.
 
+## 📚 Documentation
+
+### Table des matières
+
+1. [Installation](#-installation)
+2. [Quick Start](#-quick-start)
+3. [Components](#-components)
+   - [Modal Component](#modal-component)
+   - [Drawer Component](#drawer-component)
+   - [Table Component](#table-component)
+4. [Features](#-features)
+5. [Customization](#-customization)
+6. [Props](#-props)
+   - [Table Props](#table)
+   - [TableHead Props](#tablehead)
+   - [TableHeadCell Props](#tableheadcell)
+   - [TableCell Props](#tablecell)
+7. [License](#-license)
+
 ## 📦 Installation
 
 ```bash
@@ -193,10 +212,6 @@ All components can be customized using:
 | position | 'left' \| 'right' \| 'top' \| 'bottom' | 'right' | Drawer position |
 | size | 'sm' \| 'md' \| 'lg' \| 'xl' | 'md' | Drawer size |
 
-## 🤝 Contributing
+## 📄 License
 
-We welcome contributions! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-MIT 
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
