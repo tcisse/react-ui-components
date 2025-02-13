@@ -66,9 +66,11 @@ function App() {
         isOpen={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         title="Example Drawer"
-        position="right"
+        position="left"
         size='md'
         className='bg-white'
+        closeOnClickOutside={false}
+        closeOnEsc={false}
       >
         <div className="p-6">
           <h2>Drawer Content</h2>

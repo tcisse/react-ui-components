@@ -76,7 +76,7 @@ export const Drawer: React.FC<DrawerProps> = ({
     <div className="fixed inset-0 z-50" data-testid="drawer-container" role="presentation">
       {overlay && (
         <div
-          className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"
+          className="absolute inset-0 bg-black bg-opacity-50"
           aria-hidden="true"
         />
       )}
@@ -89,6 +89,7 @@ export const Drawer: React.FC<DrawerProps> = ({
           'fixed bg-white shadow-lg transition-transform duration-300 ease-in-out',
           positionClasses[position],
           sizeClasses[size],
+          isOpen && 'transform-none',
           className
         )}
       >
@@ -102,8 +103,8 @@ export const Drawer: React.FC<DrawerProps> = ({
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              width="32"
-              height="32"
+              width="25"
+              height="25"
               color="#000000"
               fill="none"
             >
@@ -126,7 +127,7 @@ export const Drawer: React.FC<DrawerProps> = ({
         </div>
 
         {/* Drawer content */}
-        <div className="p-6">{children}</div>
+        <div className="">{children}</div>
       </div>
     </div>,
     document.body
