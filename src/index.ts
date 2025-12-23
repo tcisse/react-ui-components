@@ -9,3 +9,10 @@ export {
   TableCell,
   TableHeadCell,
 } from './components/Table/Table';
+export {
+  PricingTable,
+  type PricingPlan,
+  type PricingFeature,
+  type PricingTableProps,
+  type PricingTableVariant,
+} from './components/PricingTable/PricingTable';

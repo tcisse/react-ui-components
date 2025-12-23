@@ -1,6 +1,6 @@
 # @cisseui/react-components
 
-A modern React component library featuring Table, Modal, and Drawer components. Built with TypeScript and styled with Tailwind CSS.
+A modern React component library featuring Table, Modal, Drawer, and PricingTable components. Built with TypeScript and styled with Tailwind CSS.
 
 ## 📚 Documentation
 
@@ -12,6 +12,7 @@ A modern React component library featuring Table, Modal, and Drawer components. 
    - [Modal Component](#modal-component)
    - [Drawer Component](#drawer-component)
    - [Table Component](#table-component)
+   - [PricingTable Component](#pricingtable-component)
 4. [Features](#-features)
 5. [Customization](#-customization)
 6. [Props](#-props)
@@ -34,7 +35,7 @@ pnpm add @cisseui/react-components
 ## 🚀 Quick Start
 
 ```tsx
-import { Modal, Drawer, Table } from '@cisseui/react-components';
+import { Modal, Drawer, Table, PricingTable } from '@cisseui/react-components';
 ```
 
 ## 🛠️ Components
@@ -143,6 +144,103 @@ function App() {
   );
 }
 ```
+
+### PricingTable Component
+
+A flexible pricing comparison table component with multiple layout variants, perfect for SaaS pricing pages.
+
+```tsx
+import { PricingTable, PricingPlan } from '@cisseui/react-components';
+
+function App() {
+  const plans: PricingPlan[] = [
+    {
+      id: 'starter',
+      name: 'Starter',
+      description: 'Perfect for individuals',
+      price: 9,
+      period: 'month',
+      features: [
+        { name: 'Feature 1', included: true },
+        { name: 'Feature 2', included: true },
+        { name: 'Feature 3', included: false },
+      ],
+      ctaLabel: 'Get Started',
+      ctaAction: () => console.log('Starter selected'),
+    },
+    {
+      id: 'pro',
+      name: 'Pro',
+      description: 'Best for teams',
+      price: 29,
+      period: 'month',
+      popular: true,
+      features: [
+        { name: 'Feature 1', included: true },
+        { name: 'Feature 2', included: true },
+        { name: 'Feature 3', included: true },
+      ],
+      ctaLabel: 'Start Free Trial',
+      ctaAction: () => console.log('Pro selected'),
+    },
+  ];
+
+  return (
+    <PricingTable
+      plans={plans}
+      variant="cards" // 'table' | 'cards' | 'minimal' | 'featured'
+      highlightedPlanId="pro"
+      headerTitle="Choose Your Plan"
+      headerDescription="Select the perfect plan for your needs"
+    />
+  );
+}
+```
+
+#### Variants
+
+- **`table`** (default): Classic comparison table with feature rows, perfect for detailed feature comparison
+- **`cards`**: Modern card-based layout with side-by-side plans, great for modern websites
+- **`minimal`**: Clean and minimal design, ideal for a subtle and elegant look
+- **`featured`**: Prominent featured plan at the top with other plans below, perfect for highlighting a recommended plan
+
+#### Props
+
+##### PricingTable
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| plans | PricingPlan[] | - | Array of pricing plans to display |
+| variant | 'table' \| 'cards' \| 'minimal' \| 'featured' | 'table' | Layout variant |
+| highlightedPlanId | string | - | ID of the plan to highlight |
+| className | string | - | Additional CSS classes |
+| showHeader | boolean | true | Show header section |
+| headerTitle | string | 'Choose Your Plan' | Header title |
+| headerDescription | string | - | Header description |
+
+##### PricingPlan
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| id | string | - | Unique identifier for the plan |
+| name | string | - | Plan name |
+| description | string | - | Plan description |
+| price | string \| number | - | Plan price |
+| period | string | - | Billing period (e.g., 'month', 'year') |
+| currency | string | '$' | Currency symbol |
+| features | PricingFeature[] | - | Array of plan features |
+| ctaLabel | string | - | Call-to-action button label |
+| ctaAction | () => void | - | Callback when CTA is clicked |
+| popular | boolean | false | Mark plan as popular |
+| badge | string | - | Custom badge text |
+
+##### PricingFeature
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| name | string | - | Feature name |
+| included | boolean | true | Whether feature is included |
+| value | string \| ReactNode | - | Custom value to display instead of checkmark |
 
 #### Props
 
